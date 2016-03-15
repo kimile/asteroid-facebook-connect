@@ -92,11 +92,17 @@ Meteor.methods({
     Meteor.users.update(ref.userId, {
       $push: {'services.resume.loginTokens': hashStampedToken}
     });
+    
+    // set the user identifier for this connection
+    this.setUserId(ref.userId);
 
     //sending token along with the userId
     return {
       id: ref.userId,
-      token: stampedToken.token
+      token: stampedToken.token,
+      
+      // include the user details
+      user: Meteor.user()
     }
   }
 });
