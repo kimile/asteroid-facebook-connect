@@ -59,6 +59,7 @@ Meteor.methods({
         _.extend(options.profile, profileFields);
 
         options.profile.avatar = profilePicture;
+        options.profile.origin = "app";
 
         var ref = null;
 
